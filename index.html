@@ -424,21 +424,7 @@
         <a-plane position="0 2.5 -5" rotation="0 0 0" width="10" height="0.008" color="#FFFFFF" transparent="true" opacity="0.12"></a-plane>
         <a-plane position="0 3.0 -5" rotation="0 0 0" width="10" height="0.008" color="#FFFFFF" transparent="true" opacity="0.12"></a-plane>
 
-        <!-- Torus ring at water surface for visual movement -->
-        <a-torus
-          id="ring"
-          position="0 0.4 -0.5"
-          rotation="-90 0 0"
-          radius="2.5"
-          radius-tubular="0.025"
-          color="#B8E8F5"
-          transparent="true"
-          opacity="0.5"
-          animation="property: rotation;
-                     to: -90 360 0;
-                     dur: 10000; loop: true; easing: linear">
-        </a-torus>
-
+      
         <!-- Filter beds spatial zone -->
         <a-box
           id="filterzone"
@@ -582,7 +568,7 @@
         var cube  = document.querySelector('#flood-cube');
         var surf  = document.querySelector('#water-surface');
         var line  = document.querySelector('#waterline');
-        var ring  = document.querySelector('#ring');
+    
         var fzone = document.querySelector('#filterzone');
         var badge = document.querySelector('#fb-badge');
 
@@ -602,7 +588,7 @@
           cube.setAttribute('visible', false);
           surf.setAttribute('visible', false);
           line.setAttribute('visible', false);
-          ring.setAttribute('visible', false);
+    
           fzone.setAttribute('visible', true);
           badge.style.display = 'block';
           document.querySelector('#height-value').textContent = 'Zone';
@@ -613,7 +599,7 @@
           cube.setAttribute('visible', true);
           surf.setAttribute('visible', true);
           line.setAttribute('visible', true);
-          ring.setAttribute('visible', true);
+      
           fzone.setAttribute('visible', false);
           badge.style.display = 'none';
 
@@ -633,8 +619,7 @@
           // Update waterline on back wall
           line.setAttribute('position', '0 '+lineY.toFixed(3)+' -5');
 
-          // Update ring at water surface
-          ring.setAttribute('position', '0 '+(surfY+0.02).toFixed(3)+' -0.5');
+        
 
           // Update height readout
           document.querySelector('#height-value').textContent = s.level+'m';
